@@ -1,5 +1,7 @@
 package es.ubu.lsi.model.conciertos;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 /**
@@ -10,8 +12,10 @@ import javax.persistence.*;
  *
  */
 @Embeddable
-public class Direccion {
-
+public class Direccion implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	// Campos relativos a la dirección
 	private String direccion;
 	private String ciudad;
