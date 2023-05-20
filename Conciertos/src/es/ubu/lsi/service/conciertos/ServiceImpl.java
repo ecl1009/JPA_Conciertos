@@ -10,10 +10,10 @@ import javax.persistence.EntityManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import es.ubu.lsi.dao.DAOCliente;
-import es.ubu.lsi.dao.DAOCompra;
-import es.ubu.lsi.dao.DAOConcierto;
-import es.ubu.lsi.dao.DAOGrupo;
+import es.ubu.lsi.dao.conciertos.DAOCliente;
+import es.ubu.lsi.dao.conciertos.DAOCompra;
+import es.ubu.lsi.dao.conciertos.DAOConcierto;
+import es.ubu.lsi.dao.conciertos.DAOGrupo;
 import es.ubu.lsi.model.conciertos.Cliente;
 import es.ubu.lsi.model.conciertos.Compra;
 import es.ubu.lsi.model.conciertos.Concierto;

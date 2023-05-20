@@ -21,9 +21,9 @@
 			<property name="hibernate.connection.username" value="HR" />
 			<property name="hibernate.connection.password" value="hr" />
 			<property name="hibernate.connection.autocommit" value="false" />
-			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.generate_statistics" value="false" />
+			<property name="hibernate.generate_statistics" value="true" />
 			<property name="hibernate.use_sql_comments" value="false" />
 			
 

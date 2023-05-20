@@ -1,8 +1,9 @@
-package es.ubu.lsi.dao;
+package es.ubu.lsi.dao.conciertos;
 
 
 import java.util.Date;
 import java.util.List;
+import es.ubu.lsi.dao.JpaDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;

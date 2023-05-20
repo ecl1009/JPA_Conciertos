@@ -1,7 +1,7 @@
-package es.ubu.lsi.dao;
+package es.ubu.lsi.dao.conciertos;
 
 import java.util.List;
-
+import es.ubu.lsi.dao.JpaDAO;
 import javax.persistence.Query;
 import javax.persistence.EntityManager;
 
