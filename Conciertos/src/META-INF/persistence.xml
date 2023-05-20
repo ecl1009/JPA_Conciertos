@@ -9,7 +9,10 @@
 		
 		<!-- COMPLETAR LISTA DE CLASES POR LOS ALUMNOS -->	
 
-	
+	<class>es.ubu.lsi.model.conciertos.Grupo</class>
+	<class>es.ubu.lsi.model.conciertos.Compra</class>
+	<class>es.ubu.lsi.model.conciertos.Concierto</class>
+	<class>es.ubu.lsi.model.conciertos.Cliente</class>
 	<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
 			<property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver" />
@@ -18,10 +21,10 @@
 			<property name="hibernate.connection.username" value="HR" />
 			<property name="hibernate.connection.password" value="hr" />
 			<property name="hibernate.connection.autocommit" value="false" />
-			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.generate_statistics" value="false" />
-			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.generate_statistics" value="true" />
+			<property name="hibernate.use_sql_comments" value="false" />
 			
 
 			<!-- Solution 1: internal Hibernate pool connection not for production -->

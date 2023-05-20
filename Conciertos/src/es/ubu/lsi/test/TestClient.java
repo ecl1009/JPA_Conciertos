@@ -31,7 +31,7 @@ import es.ubu.lsi.test.util.PoolDeConexiones;
  * @author <a href="mailto:jmaudes@ubu.es">Jesús Maudes</a>
  * @author <a href="mailto:rmartico@ubu.es">Raúl Marticorena</a>
  * @author <a href="mailto:mmabad@ubu.es">Mario Martínez</a>
- * @author <a href="mailto:pgdiaz@ubu.es">Pablo García</a> 
+ * @author <a href="mailto:pgdiaz@ubu.es">Pablo García</a>
  * @since 1.0
  */
 public class TestClient {
@@ -72,7 +72,7 @@ public class TestClient {
 	static public void init() {
 		try {
 			// Acuerdate de q la primera vez tienes que crear el .bindings con:
-			//PoolDeConexiones.reconfigurarPool();
+			// PoolDeConexiones.reconfigurarPool();
 			// Inicializacion de Pool
 			pool = PoolDeConexiones.getInstance();
 		} catch (Exception e) {
@@ -99,35 +99,29 @@ public class TestClient {
 			implService = new ServiceImpl();
 			System.out.println("Framework y servicio iniciado...");
 
-	
 			// insertar compra correcta
 			insertarCompraCorrecta(implService);
-			
+
 			// insertar compra con grupo incorrecto
 			insertarCompraGrupoIncorrecto(implService);
-			
-			
+
 			// insertar compra con cliente incorrecto
 			insertarCompraClienteIncorrecto(implService);
-			
-			
+
 			// insertar compra con concierto incorrecto
 			insertarCompraConciertoIncorrecto(implService);
-			
-			
+
 			// insertar compra con número de tickets incorrecto
-			insertarCompraTicketsIncorrectos(implService);			
-			
+			insertarCompraTicketsIncorrectos(implService);
+
 			// consulta todos los grupos
-			consultarGruposUsandoGrafo(implService);				
-			
-			
+			consultarGruposUsandoGrafo(implService);
+
 			// desactivacion correcta
 			desactivacionCorrecta(implService);
-			
+
 			// desactivacion incorrecta
 			desactivacionIncorrecta(implService);
-
 
 		} catch (Exception e) { // for testing code...
 			logger.error(e.getMessage());
@@ -136,7 +130,7 @@ public class TestClient {
 			pool = null;
 		}
 	} // testClient
-	
+			
 	
 	/**
 	 * Desactiva a un grupo que no existe
@@ -147,7 +141,7 @@ public class TestClient {
 	private static void desactivacionIncorrecta(Service implService) throws Exception {
 		try {
 			System.out.println("Desactivar grupo incorrecto");
-			implService.desactivar(98); 
+			implService.desactivar(98);
 
 		} catch (IncidentException ex) {
 			if (ex.getError() == IncidentError.NOT_EXIST_MUSIC_GROUP) {
@@ -158,13 +152,14 @@ public class TestClient {
 		} catch (PersistenceException ex) {
 			logger.error("ERROR en transacción de desactivar con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error en desactivar ", ex);
-		} catch(Exception ex) {
-			logger.error("ERROR GRAVE de programación en transacción de desactivar con JPA: " + ex.getLocalizedMessage());
+		} catch (Exception ex) {
+			logger.error(
+					"ERROR GRAVE de programación en transacción de desactivar con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error grave desactivando grupo ", ex);
 		}
 
 	}
-	
+
 	/**
 	 * Inserta una compra con grupo incorrecto
 	 * 
@@ -174,7 +169,7 @@ public class TestClient {
 	private static void insertarCompraGrupoIncorrecto(Service implService) throws Exception {
 		try {
 			System.out.println("Insertar compra con grupo incorrecto");
-			implService.comprar(dateformat.parse("01/11/2023 21:00:00"), "1111111F", -11, 3); 
+			implService.comprar(dateformat.parse("01/11/2023 21:00:00"), "1111111F", -11, 3);
 
 		} catch (IncidentException ex) {
 			if (ex.getError() == IncidentError.NOT_EXIST_MUSIC_GROUP) {
@@ -185,13 +180,13 @@ public class TestClient {
 		} catch (PersistenceException ex) {
 			logger.error("ERROR en transacción de desactivar con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error en desactivar ", ex);
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			logger.error("ERROR GRAVE de programación en transacción compra con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error grave insertando compra", ex);
 		}
 
 	}
-	
+
 	/**
 	 * Inserta una compra con cliente incorrecto
 	 * 
@@ -201,7 +196,7 @@ public class TestClient {
 	private static void insertarCompraClienteIncorrecto(Service implService) throws Exception {
 		try {
 			System.out.println("Insertar compra con cliente incorrecto");
-			implService.comprar(dateformat.parse("01/11/2023 21:00:00"), "1111111Z", 1, 3); 
+			implService.comprar(dateformat.parse("01/11/2023 21:00:00"), "1111111Z", 1, 3);
 
 		} catch (IncidentException ex) {
 			if (ex.getError() == IncidentError.NOT_EXIST_CLIENT) {
@@ -212,13 +207,13 @@ public class TestClient {
 		} catch (PersistenceException ex) {
 			logger.error("ERROR en transacción de desactivar con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error en desactivar ", ex);
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			logger.error("ERROR GRAVE de programación en transacción compra con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error grave insertando compra", ex);
 		}
 
 	}
-	
+
 	/**
 	 * Inserta una compra con concierto incorrecto
 	 * 
@@ -228,8 +223,7 @@ public class TestClient {
 	private static void insertarCompraConciertoIncorrecto(Service implService) throws Exception {
 		try {
 			System.out.println("Insertar compra con concierto incorrecto");
-			implService.comprar(dateformat.parse("01/11/2023 17:00:00"), "1111111F", 1, 3); 
-
+			implService.comprar(dateformat.parse("01/11/2023 17:00:00"), "1111111F", 1, 3);
 		} catch (IncidentException ex) {
 			if (ex.getError() == IncidentError.NOT_EXIST_CONCERT) {
 				System.out.println("\tOK detecta correctamente que NO existe el concierto");
@@ -239,13 +233,13 @@ public class TestClient {
 		} catch (PersistenceException ex) {
 			logger.error("ERROR en transacción de desactivar con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error en compra ", ex);
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			logger.error("ERROR GRAVE de programación en transacción compra con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error grave compra", ex);
 		}
 
 	}
-	
+
 	/**
 	 * Inserta una compra con número de tickets incorrecto
 	 * 
@@ -254,7 +248,7 @@ public class TestClient {
 	 */
 	private static void insertarCompraTicketsIncorrectos(Service implService) throws Exception {
 		try {
-			System.out.println("Insertar compra con concierto incorrecto");
+			System.out.println("Insertar compra sin tickets con concierto incorrecto");
 			implService.comprar(dateformat.parse("01/11/2023 21:00:00"), "1111111F", 1, 103);
 
 		} catch (IncidentException ex) {
@@ -266,13 +260,12 @@ public class TestClient {
 		} catch (PersistenceException ex) {
 			logger.error("ERROR en transacción de desactivar con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error en desactivar ", ex);
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			logger.error("ERROR GRAVE de programación en transacción compra con JPA: " + ex.getLocalizedMessage());
 			throw new RuntimeException("Error grave insertando compra", ex);
 		}
 
-	}
-
+	}	
 
 	/**
 	 * Desactiva a un grupo correctamente
@@ -286,7 +279,7 @@ public class TestClient {
 		ResultSet rs = null;
 		try {
 			System.out.println("Desactivar grupo correcto");
-			implService.desactivar(1); 
+			implService.desactivar(1);
 
 			con = pool.getConnection();
 
@@ -299,10 +292,10 @@ public class TestClient {
 
 			logger.debug(resultado.toString());
 			String cadenaEsperada =
-			// @formatter:off
-			"0"; // nueva fila
+					// @formatter:off
+					"0"; // nueva fila
 			// @formatter:on
-	
+
 			if (cadenaEsperada.equals(resultado.toString())) {
 				System.out.println("\tOK grupo correctamente desactivado");
 			} else {
@@ -317,7 +310,7 @@ public class TestClient {
 		} finally {
 			cerrarRecursos(con, st, rs);
 		}
-		
+
 	}
 
 	/**
@@ -329,7 +322,7 @@ public class TestClient {
 	private static void consultarGruposUsandoGrafo(Service implService) {
 		try {
 			System.out.println("Información completa con grafos de entidades...");
-			List<Grupo> grupos = implService.consultarGrupos();		
+			List<Grupo> grupos = implService.consultarGrupos();
 			for (Grupo grupo : grupos) {
 				System.out.println(grupo.toString());
 				Set<Concierto> conciertos = grupo.getConciertos();
@@ -349,7 +342,7 @@ public class TestClient {
 			throw new RuntimeException("Error en consulta de grupos", ex);
 		}
 	}
-	
+
 	/**
 	 * Inserta una compra correcta.
 	 * 
@@ -363,13 +356,15 @@ public class TestClient {
 		ResultSet rs = null;
 		try {
 			System.out.println("Insertar compra correcta");
-			implService.comprar(dateformat.parse("01/11/2023 21:00:00"), "1111111F", 1, 3); 
 
+			implService.comprar(dateformat.parse("01/11/2023 21:00:00"), "1111111F", 1, 3);
+			
 			con = pool.getConnection();
 
 			
 			st = con.createStatement();
-			rs = st.executeQuery("SELECT idcompra||'-'||nif||'-'||idconcierto||'-'||n_tickets FROM COMPRA ORDER BY idcompra desc");
+			rs = st.executeQuery(
+					"SELECT idcompra||'-'||nif||'-'||idconcierto||'-'||n_tickets FROM COMPRA ORDER BY idcompra desc");
 
 			StringBuilder resultado = new StringBuilder();
 			rs.next();
@@ -377,10 +372,10 @@ public class TestClient {
 
 			logger.debug(resultado.toString());
 			String cadenaEsperada =
-			// @formatter:off
-			"6-1111111F-1-3"; // nueva fila
+					// @formatter:off
+					"6-1111111F-1-3"; // nueva fila
 			// @formatter:on
-	
+
 			if (cadenaEsperada.equals(resultado.toString())) {
 				System.out.println("\tOK compra bien insertada");
 			} else {
@@ -392,7 +387,7 @@ public class TestClient {
 			rs.next();
 			resultadoTickets.append(rs.getString(1));
 
-			String ticketsEsperados = "97"; 
+			String ticketsEsperados = "97";
 			if (ticketsEsperados.equals(resultadoTickets.toString())) {
 				System.out.println("\tOK actualiza bien los tickets del concierto");
 			} else {

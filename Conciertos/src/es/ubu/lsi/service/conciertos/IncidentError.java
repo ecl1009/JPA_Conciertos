@@ -20,6 +20,7 @@ public enum IncidentError {
 	NOT_AVAILABLE_TICKETS("Número de tickts no disponible"),
 	NOT_EXIST_CONCERT("No existe el concierto para la fecha y el grupo indicado");	
 	
+	
 
 	
 	/** Text. */
